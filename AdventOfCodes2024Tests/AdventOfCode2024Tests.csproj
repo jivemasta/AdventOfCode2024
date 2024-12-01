@@ -13,6 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AdventOfCode2024\AdventOfCode2024.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="AdventOfCode2024" />
     <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
   </ItemGroup>
 
