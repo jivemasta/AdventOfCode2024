@@ -4,13 +4,14 @@
     {
         public static int PartOne()
         {
-            (List<int> leftList, List<int> rightList) = LoadLists(@"DayOne\DayOnePartOneInput.txt");
+            (List<int> leftList, List<int> rightList) = LoadLists(@"DayOne\DayOneInput.txt");
             return CalculateDistance(leftList, rightList);
         }
 
-        internal static object PartTwo()
+        internal static int PartTwo()
         {
-            throw new NotImplementedException();
+            (List<int> leftList, List<int> rightList) = LoadLists(@"DayOne\DayOneInput.txt");
+            return CalculateSimilarityScore(leftList, rightList);
         }
 
         public static int CalculateDistance(List<int> leftList, List<int> rightList)
@@ -44,6 +45,19 @@
             }
 
             return (leftList, rightList);
+        }
+
+        public static int CalculateSimilarityScore(List<int> leftList, List<int> rightList)
+        {
+            int result = 0;
+
+            foreach (int item in leftList)
+            {
+                int count = rightList.Where(v => v == item).Count();
+                result += item * count;
+            }
+
+            return result;
         }
     }
 }

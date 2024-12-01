@@ -6,7 +6,7 @@ namespace AdventOfCode2024Tests
     public sealed class DayOneTests
     {
         [TestMethod]
-        public void DayOneSample()
+        public void DayOnePartOneSample()
         {
             (List<int> leftList, List<int> rightList) = DayOne.LoadLists(@"DayOne\DayOneSampleInput.txt");
             Assert.AreEqual(11, DayOne.CalculateDistance(leftList, rightList));
@@ -15,14 +15,22 @@ namespace AdventOfCode2024Tests
         [TestMethod]
         public void DayOnePartOneTest()
         {
-            (List<int> leftList, List<int> rightList) = DayOne.LoadLists(@"DayOne\DayOnePartOneInput.txt");
+            (List<int> leftList, List<int> rightList) = DayOne.LoadLists(@"DayOne\DayOneInput.txt");
             Assert.AreEqual(765748, DayOne.CalculateDistance(leftList, rightList));
+        }
+
+        [TestMethod]
+        public void DayOnePartTwoSample()
+        {
+            (List<int> leftList, List<int> rightList) = DayOne.LoadLists(@"DayOne\DayOneSampleInput.txt");
+            Assert.AreEqual(31, DayOne.CalculateSimilarityScore(leftList, rightList));
         }
 
         [TestMethod]
         public void DayOnePartTwoTest()
         {
-            Assert.Fail();
+            (List<int> leftList, List<int> rightList) = DayOne.LoadLists(@"DayOne\DayOneInput.txt");
+            Assert.AreEqual(27732508, DayOne.CalculateSimilarityScore(leftList, rightList));
         }
     }
 }
