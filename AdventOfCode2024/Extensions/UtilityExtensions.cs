@@ -13,6 +13,12 @@
             return collection.Select((i, index) => (index, i));
         }
 
+        /// <summary>
+        /// Gets a dictionary of how many times each value appears in a collection
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="collection"></param>
+        /// <returns></returns>
         public static Dictionary<T, int> GetInstanceCount<T>(this IEnumerable<T> collection) where T : notnull
         {
             Dictionary<T, int> keyCount = [];
