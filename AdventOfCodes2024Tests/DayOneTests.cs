@@ -1,6 +1,4 @@
-﻿using AdventOfCode2024.DayOne;
-
-namespace AdventOfCode2024Tests
+﻿namespace AdventOfCode2024Tests
 {
     [TestClass]
     public sealed class DayOneTests
@@ -15,8 +13,7 @@ namespace AdventOfCode2024Tests
         [TestMethod]
         public void DayOnePartOneTest()
         {
-            (List<int> leftList, List<int> rightList) = DayOne.LoadLists(@"DayOne\DayOneInput.txt");
-            Assert.AreEqual(765748, DayOne.CalculateDistance(leftList, rightList));
+            Assert.AreEqual(765748, DayOne.PartOne());
         }
 
         [TestMethod]
@@ -29,8 +26,7 @@ namespace AdventOfCode2024Tests
         [TestMethod]
         public void DayOnePartTwoTest()
         {
-            (List<int> leftList, List<int> rightList) = DayOne.LoadLists(@"DayOne\DayOneInput.txt");
-            Assert.AreEqual(27732508, DayOne.CalculateSimilarityScore(leftList, rightList));
+            Assert.AreEqual(27732508, DayOne.PartTwo());
         }
     }
 }
