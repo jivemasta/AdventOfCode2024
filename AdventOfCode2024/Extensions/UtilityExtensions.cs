@@ -29,5 +29,15 @@
 
             return keyCount;
         }
+
+        /// <summary>
+        /// Converts a string to an int.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int ToInt(this string value)
+        {
+            return Convert.ToInt32(value);
+        }
     }
 }

@@ -32,8 +32,8 @@ public static partial class DayOne
 
         foreach (string line in File.ReadLines(fileName))
         {
-            leftList.Add(Convert.ToInt32(InputListsSplit().Match(line).Groups["left"].Value));
-            rightList.Add(Convert.ToInt32(InputListsSplit().Match(line).Groups["right"].Value));
+            leftList.Add(InputListsSplit().Match(line).Groups["left"].Value.ToInt());
+            rightList.Add(InputListsSplit().Match(line).Groups["right"].Value.ToInt());
         }
 
         return (leftList, rightList);

@@ -14,15 +14,15 @@ public partial class DayTwo
 
     public static int PartOne()
     {
-        return LoadReadings(@"DayTwo\DayTwoInput.txt")
-            .Select(r => EvaluateReadings(r.ToList()))
-            .Where(c => c == true).Count();
+        return LoadReadings(@"DayTwo\DayTwoInput.txt").Select(r => EvaluateReadings(r.ToList()))
+                                                      .Count(c => c);
     }
 
     public static bool EvaluateReadings(List<int> numberList)
     {
         List<bool> safetyChecks = [];
         Direction direction = GetDirection(numberList[0], numberList[1]);
+
         foreach ((int Index, int Value) i in numberList.Enumerate())
         {
             // break out on last value of list
@@ -30,6 +30,7 @@ public partial class DayTwo
                 break;
             safetyChecks.Add(SafetyCheck(direction, i.Value, numberList[i.Index + 1]));
         }
+
         return safetyChecks.All(c => c == true);
     }
 
@@ -52,12 +53,9 @@ public partial class DayTwo
 
     public static IEnumerable<IEnumerable<int>> LoadReadings(string filename)
     {
-        return File
-            .ReadLines(filename)
-            .Select(line => readingRegex()
-                            .Matches(line)
-                            .Select(m => Convert.ToInt32(m.Value))
-                            );
+        return File.ReadLines(filename)
+                   .Select(line => readingRegex().Matches(line)
+                                                 .Select(m => Convert.ToInt32(m.Value)));
     }
 
     [GeneratedRegex(@"(\d+)")]

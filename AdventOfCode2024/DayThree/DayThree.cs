@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using AdventOfCode2024.Extensions;
+using System.Text.RegularExpressions;
 
 namespace AdventOfCode2024;
 public static partial class DayThree
@@ -15,19 +16,25 @@ public static partial class DayThree
 
     public static string LoadMemory(string fileName)
     {
-        return String.Join("", File.ReadAllLines(fileName));
+        return string
+            .Join("", File.ReadAllLines(fileName));
     }
 
     public static int ParseMemorySimple(string testString)
     {
-        return mulRegex().Matches(testString).Select(m => Convert.ToInt32(m.Groups[1].Value) * Convert.ToInt32(m.Groups[2].Value)).Sum();
+        return mulRegex().Matches(testString)
+                         .Select(m => m.Groups[1].Value.ToInt() * m.Groups[2].Value.ToInt())
+                         .Sum();
     }
 
     public static int ParseMemoryConditional(string testString)
     {
         int total = 0;
         bool enable = true;
-        foreach (string? instruction in conditionalRegex().Matches(testString).Select(m => m.Value))
+        IEnumerable<string> instructions = conditionalRegex().Matches(testString)
+                                                             .Select(m => m.Value);
+
+        foreach (string instruction in instructions)
         {
             switch (instruction)
             {
@@ -39,7 +46,7 @@ public static partial class DayThree
                     break;
                 default:
                     if (enable)
-                        total += Convert.ToInt32(mulRegex().Match(instruction).Groups[1].Value) * Convert.ToInt32(mulRegex().Match(instruction).Groups[2].Value);
+                        total += mulRegex().Match(instruction).Groups[1].Value.ToInt() * mulRegex().Match(instruction).Groups[2].Value.ToInt();
                     break;
             }
         }
