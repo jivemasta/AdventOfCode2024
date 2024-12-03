@@ -12,7 +12,11 @@
 
             Console.WriteLine("Day Two:");
             Console.WriteLine($"\tPart One: {DayTwo.PartOne()}");
-            Console.WriteLine($"\tPart Two: {DayTwo.PartTwo()}");
+            // Console.WriteLine($"\tPart Two: {DayTwo.PartTwo()}");
+
+            Console.WriteLine("Day Three:");
+            Console.WriteLine($"\tPart One: {DayThree.PartOne()}");
+            Console.WriteLine($"\tPart Two: {DayThree.PartTwo()}");
         }
     }
 }

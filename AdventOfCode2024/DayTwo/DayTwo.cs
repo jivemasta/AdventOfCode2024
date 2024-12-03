@@ -19,11 +19,6 @@ public partial class DayTwo
             .Where(c => c == true).Count();
     }
 
-    public static string PartTwo()
-    {
-        throw new NotImplementedException();
-    }
-
     public static bool EvaluateReadings(List<int> numberList)
     {
         List<bool> safetyChecks = [];
@@ -33,30 +28,6 @@ public partial class DayTwo
             // break out on last value of list
             if (i.Index + 1 == numberList.Count)
                 break;
-            safetyChecks.Add(SafetyCheck(direction, i.Value, numberList[i.Index + 1]));
-        }
-        return safetyChecks.All(c => c == true);
-    }
-
-    public static bool EvaluateReadingsDamper(List<int> numberList)
-    {
-        List<bool> safetyChecks = [];
-        Direction direction = GetDirection(numberList[0], numberList[1]);
-        foreach ((int Index, int Value) i in numberList.Enumerate())
-        {
-            // break out on last value of list
-            if (i.Index + 1 == numberList.Count)
-                break;
-            bool check = SafetyCheck(direction, i.Value, numberList[i.Index + 1]);
-            if (check == false)
-            {
-                if (i.Index + 2 > numberList.Count + 1) continue;
-                if (SafetyCheck(direction, i.Value, numberList[i.Index + 2]) != true)
-                {
-                    safetyChecks.Add(false);
-                    continue;
-                }
-            }
             safetyChecks.Add(SafetyCheck(direction, i.Value, numberList[i.Index + 1]));
         }
         return safetyChecks.All(c => c == true);
